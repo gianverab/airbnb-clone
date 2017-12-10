@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import GoogleMap from 'google-map-react';
-import './App.css';
 import Flat from './components/Flat';
 import Marker from './components/Marker';
 
@@ -48,17 +48,17 @@ class App extends Component {
       };
     }
     return (
-      <div className="app">
-        <div className="main">
-          <div className="search">
+      <AppWrapper>
+        <Main>
+          <SearchBox>
             <input
               type="text"
               placeholder="Search..."
               value={this.state.search}
               onChange={this.handleSearch}
             />
-          </div>
-          <div className="flats">
+          </SearchBox>
+          <Flats>
             {this.state.flats.map(flat =>
               (<Flat
                 key={flat.name}
@@ -66,9 +66,9 @@ class App extends Component {
                 selectFlat={this.selectFlat}
               />),
             )}
-          </div>
-        </div>
-        <div className="map">
+          </Flats>
+        </Main>
+        <MapContainer>
           <GoogleMap
             center={center}
             zoom={13}
@@ -84,10 +84,46 @@ class App extends Component {
               />),
             )}
           </GoogleMap>
-        </div>
-      </div>
+        </MapContainer>
+      </AppWrapper>
     );
   }
 }
+
+const AppWrapper = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  display: flex;
+`;
+
+const Main = styled.div`
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const SearchBox = styled.div`
+  padding: 10px;
+  margin-right: 5px;
+  input {
+    width: 100%;
+    height: 40px;
+    font-size: 24px;
+    color: #999;
+    padding-left: 5px;
+  }
+`;
+
+const MapContainer = styled.div`
+  flex-grow: 1;
+  height: 100vh;
+  top: 0;
+  position: sticky;
+`;
+const Flats = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+`;
 
 export default App;

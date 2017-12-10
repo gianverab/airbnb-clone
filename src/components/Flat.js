@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Flat.css';
+import styled from 'styled-components';
 
 class Flat extends Component {
   handleClick = () => {
@@ -12,11 +12,31 @@ class Flat extends Component {
       backgroundImage: `url('${flat.imageUrl}')`,
     };
     return (
-      <div className="flat" onClick={this.handleClick}>
-        <div className="flat-picture" style={style} />
-        <div className="flat-title">{`${flat.price}${flat.priceCurrency} - ${flat.name}`}</div>
-      </div>
+      <FlatWrapper onClick={this.handleClick}>
+        <FlatPicture style={style} />
+        <FlatTitle>{`${flat.price}${flat.priceCurrency} - ${flat.name}`}</FlatTitle>
+      </FlatWrapper>
     );
   }
 }
+
+const FlatWrapper = styled.div`
+  flex-basis: calc(50% - 20px);
+  margin: 10px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  :hover {
+    opacity: .8;
+  }
+`;
+const FlatPicture = styled.div`
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+`;
+const FlatTitle = styled.div`
+  margin-top: 10px;
+  font-weight: bold;
+`;
+
 export default Flat;
