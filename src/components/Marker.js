@@ -10,7 +10,7 @@ const Marker = props => (
 
 Marker.propTypes = {
   selected: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.number.isRequired,
 };
 
 export default Marker;
