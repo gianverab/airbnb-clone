@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Marker = props => (
@@ -7,19 +8,25 @@ const Marker = props => (
   </MarkerTip>
 );
 
+Marker.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+export default Marker;
+
 const MarkerTip = styled.div`
-  background: ${props =>
+background: ${props =>
     (props.selected ? 'yellow' : 'white')
 };
-  border-color: ${props =>
+border-color: ${props =>
     (props.selected ? '#000' : '#999')
 };
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  width: 60px;
-  text-align: center;
-  font-size: 16px;
-  padding: 4px;
+border-width: 1px;
+border-style: solid;
+border-radius: 4px;
+width: 60px;
+text-align: center;
+font-size: 16px;
+padding: 4px;
 `;
-export default Marker;

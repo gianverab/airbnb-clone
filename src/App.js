@@ -4,7 +4,7 @@ import GoogleMap from 'google-map-react';
 import Flat from './components/Flat';
 import Marker from './components/Marker';
 
-class App extends Component {
+export default class App extends Component {
   state = {
     flats: [],
     allFlats: [],
@@ -120,10 +120,10 @@ const MapContainer = styled.div`
   top: 0;
   position: sticky;
 `;
+
 const Flats = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
 `;
 
-export default App;

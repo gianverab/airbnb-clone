@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-class Flat extends Component {
+export default class Flat extends Component {
   handleClick = () => {
     // Call the parent method selectFlat
     this.props.selectFlat(this.props.flat);
@@ -19,6 +20,15 @@ class Flat extends Component {
     );
   }
 }
+
+Flat.propTypes = {
+  flat: PropTypes.shape({
+    imageUrl: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    priceCurrency: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 const FlatWrapper = styled.div`
   flex-basis: calc(50% - 20px);
@@ -39,4 +49,3 @@ const FlatTitle = styled.div`
   font-weight: bold;
 `;
 
-export default Flat;
